@@ -6,9 +6,9 @@ spring:
 spring:
     profiles: dev
     application:
-        name: microservicecloud-config-ailsa-dev
+        name: microservicecloud-config-dev
 ---
 spring:
     profiles: test
     application:
-        name: microservicecloud-config-ailsa-test
+        name: microservicecloud-config-test
