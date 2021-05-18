@@ -1,0 +1,24 @@
+spring:
+    profiles:
+    active:
+    - dev
+---
+spring:
+    port: 8201
+    profiles: dev
+    application:
+        name: microservicecloud-config-clent
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka        
+---
+spring:
+    port: 8202
+    profiles: test
+    application:
+        name: microservicecloud-config-ailsa-test
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka
