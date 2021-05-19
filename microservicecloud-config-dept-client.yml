@@ -1,0 +1,66 @@
+spring: 
+    profiles: 
+        active:
+           - dev
+---
+server:
+  port: 8001
+
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml
+  type-aliases-package: com.springcloud.zhangbin.pojo
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml
+spring:
+  profiles: dev
+  application:
+    name: microservicecloud-config-dept-client  #为这个服务取名，非常重要！！！！！
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/cloudDB01
+    username: root
+    password: root
+    dbcp2:
+      min-idle: 5         #最小连接数
+      initial-size: 5    #初始化连接数
+      max-total: 10      #最大连接数
+      max-wait-millis: 200  #等待连接最长的超时时间
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+  instance:
+    instance-id: dept8001
+    prefer-ip-address: true
+---
+server:
+  port: 8001
+
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml
+  type-aliases-package: com.springcloud.zhangbin.pojo
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml
+spring:
+  profiles: test
+  application:
+    name: microservicecloud-config-dept-client   #为这个服务取名，非常重要！！！！！
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/cloudDB02
+    username: root
+    password: root
+    dbcp2:
+      min-idle: 5         #最小连接数
+      initial-size: 5    #初始化连接数
+      max-total: 10      #最大连接数
+      max-wait-millis: 200  #等待连接最长的超时时间
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+  instance:
+    instance-id: dept8001
+    prefer-ip-address: true
